@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DatabaseConnection {
     private static String path = "jdbc:mysql://localhost:3306/";
-    private static String dbName = "quizdb";
+    private static String dbName = "quiz";
     private static String username = "root";
     private static String password = "";
 
