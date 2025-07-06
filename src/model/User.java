@@ -5,7 +5,7 @@ public class User {
     private String password;
     private boolean isGameMaster;
 
-    public User(String username, String password, boolean isGameMaster) {
+    public User(String username, String password) {
         this.username = username;
         this.password = password;
         this.isGameMaster = isGameMaster;
