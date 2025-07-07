@@ -6,14 +6,24 @@ import model.User;
 public class UserController {
     private UserDAO userdao = new UserDAO();
 
-    public boolean signUp(String username, String password)
-    {
+    public boolean signUp(String username, String password) {
         boolean isSignedUp = false;
         User user = new User(username, password);
         isSignedUp = userdao.insertUser(user);
         if(isSignedUp){
             return true;
         }else{
+            return false;
+        }
+    }
+
+    public boolean longIn(String username, String password) {
+        boolean isloggedin = false;
+        User user = new User(username,password);
+        isloggedin = userdao.checkUser(user);
+        if (isloggedin){
+            return true;
+        }else {
             return false;
         }
     }

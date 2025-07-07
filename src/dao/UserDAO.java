@@ -1,11 +1,9 @@
 package dao;
 
 import model.User;
+import view.LoginView;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class UserDAO {
     public boolean insertUser(User user){
@@ -27,5 +25,32 @@ public class UserDAO {
             throw new RuntimeException(e);
         }
         return isUserInserted;
+    }
+
+    public boolean checkUser(User user){
+        boolean isSignedUpUser = false;
+        Connection conn = null;
+        try {
+            conn = DatabaseConnection.connect();
+            if (conn != null){
+                String query = "SELECT * FROM user WHERE username = ? AND password = ?";
+                PreparedStatement ps = ((java.sql.Connection) conn).prepareStatement(query);
+                ps.setString(1, user.getUsername());
+                ps.setString(2,user.getPassword());
+                try {
+                    ResultSet resultSet = ps.executeQuery();
+                    if (resultSet.next()){
+                        isSignedUpUser = true;
+                    }
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        return isSignedUpUser;
     }
 }
