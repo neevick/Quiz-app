@@ -13,7 +13,7 @@ public class UserDAO {
             conn = DatabaseConnection.connect();
             if(conn != null){
                 String query = "INSERT INTO user (username, password) VALUES (?, ?)";
-                PreparedStatement ps = ((java.sql.Connection) conn).prepareStatement(query);
+                PreparedStatement ps = conn.prepareStatement(query);
                 ps.setString(1, user.getUsername());
                 ps.setString(2, user.getPassword());
                 int row = ps.executeUpdate();
@@ -33,8 +33,8 @@ public class UserDAO {
         try {
             conn = DatabaseConnection.connect();
             if (conn != null){
-                String query = "SELECT * FROM user WHERE username = ? AND password = ?";
-                PreparedStatement ps = ((java.sql.Connection) conn).prepareStatement(query);
+                String query = "SELECT username, password, isGameMaster FROM user WHERE username = ? AND password = ?";
+                PreparedStatement ps = conn.prepareStatement(query);
                 ps.setString(1, user.getUsername());
                 ps.setString(2,user.getPassword());
                 try {

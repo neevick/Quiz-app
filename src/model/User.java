@@ -23,4 +23,11 @@ public class User {
         this.password = password;
     }
 
+    public boolean isGameMaster() {
+        return isGameMaster;
+    }
+
+    public void setGameMaster(boolean gameMaster) {
+        isGameMaster = gameMaster;
+    }
 }
