@@ -1,7 +1,7 @@
 package view;
 
 public class MasterView {
-    public void showView(){
-
+    public static void showView(){
+        System.out.println("Working on MasterView.");
     }
 }

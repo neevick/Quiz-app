@@ -1,7 +1,7 @@
 package view;
 
 public class PlayerView {
-    public void gameStart(){
-
+    public static void gameStart(){
+        System.out.println("Working on player view.");
     }
 }
