@@ -15,7 +15,6 @@ public class LoginView {
         if (userController.longIn(username,password)){
             // TODO Show the questions and options
             System.out.println("Logged in successfully.");
-            System.out.println("Questions..");
         }else {
             System.out.println("Invalid username or password.");
             GameMenu.showMenu();
